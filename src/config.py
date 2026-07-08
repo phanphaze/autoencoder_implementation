@@ -1,12 +1,12 @@
 from pathlib import Path
 
 # Hyperparameters
-Learning_rate = 1e-3
-batch_size = 64
+Learning_rate = 1e-4
+batch_size = 32
 num_epochs = 25
-latent_dimension_size = 2
-train_test_split = 0.8
-
+latent_dimension_size = 32
+train_test_split = 0.7
+min_delta = 0.0001
 project_root = Path(__file__).resolve().parent.parent
 
 # Data paths
