@@ -3,10 +3,12 @@ from pathlib import Path
 # Hyperparameters
 Learning_rate = 1e-4
 batch_size = 32
-num_epochs = 5
+num_epochs = 25
 latent_dimension_size = 32
 train_test_split = 0.7
-min_delta = 0.001
+min_delta = 0.002
+patience = 3 #number of consecutive epochs with stagnation of min_delta
+
 project_root = Path(__file__).resolve().parent.parent
 
 # Data paths

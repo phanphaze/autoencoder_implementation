@@ -3,7 +3,7 @@ import torch
 
 from src.config import model_save_dir
 from src.model import Autoencoder, ConvAutoencoder
-from src.dataset import get_train_loader
+from src.dataset import get_dataloaders
 
 # Plots the original images side-by-side with their reconstructions.
 def plot_reconstruction(model, loader, device="cpu"):
@@ -81,21 +81,22 @@ def evaluate_and_plot(architecture="conv", version=None):
         return
 
     # 4. Plot
-    loader = get_train_loader()
-    plot_reconstruction(model, loader)
+    train_loader, val_loader = get_dataloaders()
+    plot_reconstruction(model, val_loader)
 
 # Takes a list of average loss values and plots them against the epoch number.
-def plot_loss_curve(epoch_losses):
+def plot_loss_curve(train_losses, val_losses):
     # Create a clean canvas
     plt.figure(figsize=(8, 5))
     
     # Plot the data with a solid line and distinct dots for each epoch
-    plt.plot(epoch_losses, marker='o', linestyle='-', color='b', label='Training Loss')
+    plt.plot(train_losses, marker='o', linestyle='-', color='b', label='Training Loss')
+    plt.plot(val_losses, marker='s', linestyle='-', color='r', label='Validation Loss')
     
     # Label the axes to make the visual clear
-    plt.title("Model Training Loss over Epochs")
+    plt.title("Model Training and Validation Loss over Epochs")
     plt.xlabel("Epoch")
-    plt.ylabel("Average MSE Loss")
+    plt.ylabel("Average Loss (BCE)")
     
     # Add a subtle grid to help estimate values visually
     plt.grid(True, linestyle='--', alpha=0.7)
