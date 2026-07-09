@@ -1,6 +1,7 @@
 # src/model.py
 import torch
 import torch.nn as nn
+
 from src.config import latent_dimension_size
 
 class Autoencoder(nn.Module):

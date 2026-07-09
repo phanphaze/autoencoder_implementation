@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import torch
+
 from src.config import model_save_dir
 from src.model import Autoencoder, ConvAutoencoder
 from src.dataset import get_train_loader

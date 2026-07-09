@@ -1,6 +1,7 @@
 import kagglehub
 import shutil
 import pandas as pd
+
 from src.config import raw_data_dir, processed_data_path
 
 def get_balanced_df():
@@ -17,7 +18,7 @@ def get_balanced_df():
 
 def setup_data():
     print("Downloading dataset from Kaggle...")
-    dataset_path = kagglehub.dataset_download("olafkrastovski/handwritten-digits-0-9")
+    dataset_path = kagglehub.dataset_download("olafkrastoveski/handwrittn-digits-0-9")
     
     print(f"Transferring data to {raw_data_dir}...")
     shutil.copytree(dataset_path, raw_data_dir, dirs_exist_ok=True)

@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+
 from src.dataset import get_train_loader
 from src.model import Autoencoder, ConvAutoencoder
 from src.utils import save_model, get_next_version_name

@@ -2,6 +2,7 @@ import pandas as pd
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from PIL import Image
+
 from src.config import processed_data_path, batch_size
 
 class HandwritingDataset(Dataset):
@@ -19,10 +20,10 @@ class HandwritingDataset(Dataset):
         if self.transform:
             image = self.transform(image)
             
-        return image, image 
+        return image
 
+# Reads the pre-processed CSV and returns a PyTorch DataLoader.
 def get_train_loader():
-    """Reads the pre-processed CSV and returns a PyTorch DataLoader."""
     df = pd.read_csv(processed_data_path)
     transform = transforms.Compose([
         transforms.Resize((28, 28)),
